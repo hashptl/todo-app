@@ -1,8 +1,21 @@
-// https://docs.cypress.io/api/introduction/api.html
-
-describe('My First Test', () => {
-  it('Visits the app root url', () => {
-    cy.visit('/')
-    cy.contains('h1', 'Welcome to Your Vue.js App')
+describe('Test Todo app', () => {
+  it('Task Manager', () => {
+    cy.visit('http://localhost:8080/#/')
   })
-})
+  it('Contains Todo List Item', () => {
+    cy.visit('/')
+    cy.get('.home')
+  })
+  it('Contains task input element', () => {
+    cy.visit('http://localhost:8080/#/')
+    cy.get('.addTask')
+  })
+  it('Add a new Task', () =>{
+    cy.visit('http://localhost:8080/#/')
+    cy.get('.addTask').type('New Task {enter}')
+  })
+  it('Cancel Task', () =>{
+    cy.visit('http://localhost:8080/#/')
+    cy.get('.cancelTask')
+  })
+});
